@@ -1,4 +1,4 @@
-name: Greeting on variable day
+name: Greeting 
 
 on:
   workflow_dispatch
@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: "Say Hello Mona it's Monday"
         run: |
-          echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+          #echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
           bash ./.github/date.sh
         env:
           First_Name: Petr 
