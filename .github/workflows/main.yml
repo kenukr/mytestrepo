@@ -15,6 +15,6 @@ jobs:
       - name: "Say Hello Mona it's Monday"
         run: |
           echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-          run bash ./.github/date.sh
+          bash ./.github/date.sh
         env:
           First_Name: Petr 
