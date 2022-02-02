@@ -19,7 +19,8 @@ jobs:
 
       - name: "Check Time"
         if: ${{ env.NOW_TIME }} > 13
-        run: exit 1
+          if: ${{ env.NOW_TIME }} < 23
+          run: exit 1
 
       - name: "Greeting"
         run: |
