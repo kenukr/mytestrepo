@@ -16,7 +16,7 @@ jobs:
         rum: date +%H >> $DATE_TIME
       - name: "Compere time"
         if: ${env.DATE_TIME <= '13'}
-        exit
+        run: exit
       - name: "Say Hello Pert"
         run: |
           echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
