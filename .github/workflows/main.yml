@@ -13,7 +13,7 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Set time to var"
-        run: echo `date +%a` > $DAY_OF_WEEK 
+        run: echo "DAY_OF_WEEK=`date +%a`" >> $GITHUB_ENV 
 
       - name: "Say Hello Pert"
         run: |
