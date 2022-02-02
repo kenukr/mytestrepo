@@ -17,8 +17,11 @@ jobs:
       - name: "Set time to NOW_TIME"
         run: echo "NOW_TIME=`date +%H`" >> $GITHUB_ENV 
 
-      - name: "Say Hello Pert"
-        if: ${{ env.NOW_TIME }} > 3
+      - name: "Check Time"
+        if: ${{ env.NOW_TIME }} > 13
+        run: exit 1
+
+      - name: "Greeting"
         run: |
           echo "$Greeting $First_Name. Time is $NOW_TIME !"
           date
