@@ -4,7 +4,7 @@ on:
   workflow_dispatch
 
 env:
-  DAY_OF_WEEK: Monday
+  DAY_OF_WEEK: 1 
 
 jobs:
   greeting_job:
@@ -16,11 +16,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "Set time to var"
-        run: export DATE_TIME=$( date +%H )
+        run: echo date +%d >> $DAY_OF_WEEK
 
-      - name: "Compere time"
+        #- name: "Compere time"
         #if: $DATE_TIME => '13'
-        run: echo $DATE_TIME
         #run: exit 1
 
       - name: "Say Hello Pert"
