@@ -16,7 +16,7 @@ jobs:
         rum: date +%H >> $DATE_TIME
 
       - name: "Compere time"
-        if: ${env.DATE_TIME <= '13'}
+        if: ${{env.DATE_TIME <= '13'}}
         run: exit 1
 
       - name: "Say Hello Pert"
