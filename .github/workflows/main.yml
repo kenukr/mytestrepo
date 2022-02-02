@@ -5,7 +5,6 @@ on:
 
 env:
   DAY_OF_WEEK: Monday
-  DATE_TIME: 1
 
 jobs:
   greeting_job:
@@ -17,10 +16,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "Set time to var"
-        run: date +%H >> $DATE_TIME
+        run: export DATE_TIME=$( date +%H )
 
       - name: "Compere time"
-        if: ${env.DATE_TIME <= '13'}
+        if: $DATE_TIME => '13'
         run: exit 1
 
       - name: "Say Hello Pert"
