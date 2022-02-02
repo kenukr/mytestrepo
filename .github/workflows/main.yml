@@ -21,4 +21,4 @@ jobs:
 
       - name: "Greetingi you have WORK time"
         run: |
-          echo "$Greeting $github.actor. Time is $NOW_TIME hour !"
+          echo "$Greeting ${{github.actor}}. Time is $NOW_TIME hour !"
