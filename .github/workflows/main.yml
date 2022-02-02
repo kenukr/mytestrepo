@@ -21,6 +21,6 @@ jobs:
 
       - name: "Greetingi you have WORK time"
         run: |
-          echo "$Greeting $First_Name. Time is $NOW_TIME !"
+          echo "$Greeting $First_Name. Time is $NOW_TIME hour !"
         env:
           First_Name: Petr 
