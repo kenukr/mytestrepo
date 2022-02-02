@@ -12,11 +12,14 @@ jobs:
     env:
       Greeting: Hello
     steps:
+      - name: "Checkout"
+        users: actions/checkout@v2
+
       - name: "Set time to var"
         run: date +%H >> $DATE_TIME
 
       - name: "Compere time"
-        if: ${{env.DATE_TIME <= '13'}}
+        if: ${env.DATE_TIME <= '13'}
         run: exit 1
 
       - name: "Say Hello Pert"
