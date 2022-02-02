@@ -18,7 +18,7 @@ jobs:
         run: echo "NOW_TIME=`date +%H`" >> $GITHUB_ENV 
 
       - name: "Say Hello Pert"
-        if: ${$NOW_TIME > 3}
+        if: ${env.$NOW_TIME} > 3
         run: |
           echo "$Greeting $First_Name. Time is $NOW_TIME !"
           date
