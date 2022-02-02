@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "Set time to var"
-        run: echo `date +%d` >> $DAY_OF_WEEK
+        run: echo `date +%d` 
 
         #- name: "Compere time"
         #if: $DATE_TIME => '13'
