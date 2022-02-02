@@ -14,9 +14,11 @@ jobs:
     steps:
       - name: "Set time to var"
         rum: date +%H >> $DATE_TIME
+
       - name: "Compere time"
         if: ${env.DATE_TIME <= '13'}
-        run: exit
+        run: exit 1
+
       - name: "Say Hello Pert"
         run: |
           echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
