@@ -5,6 +5,7 @@ on:
 
 env:
   DAY_OF_WEEK: Monday
+  DATE_TIME: 1
 
 jobs:
   greeting_job:
@@ -19,7 +20,7 @@ jobs:
         run: date +%H >> $DATE_TIME
 
       - name: "Compere time"
-        if: ${DATE_TIME <= '13'}
+        if: ${env.DATE_TIME <= '13'}
         run: exit 1
 
       - name: "Say Hello Pert"
