@@ -13,7 +13,7 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Set time to var"
-        rum: date +%H >> $DATE_TIME
+        run: date +%H >> $DATE_TIME
 
       - name: "Compere time"
         if: ${{env.DATE_TIME <= '13'}}
