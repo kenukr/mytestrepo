@@ -19,8 +19,9 @@ jobs:
         run: export DATE_TIME=$( date +%H )
 
       - name: "Compere time"
-        if: $DATE_TIME => '13'
-        run: exit 1
+        #if: $DATE_TIME => '13'
+        run: echo $DATE_TIME
+        #run: exit 1
 
       - name: "Say Hello Pert"
         run: |
