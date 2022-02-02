@@ -13,7 +13,7 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Checkout"
-        users: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: "Set time to var"
         run: date +%H >> $DATE_TIME
