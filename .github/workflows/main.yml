@@ -4,7 +4,9 @@ on:
   workflow_dispatch
 
 env:
-  DAY_OF_WEEK: 1 
+  START_SLEEP_TIME: 3
+  STOP_SLEEP_TIME:  6
+  NOW_TIME: 23
 
 jobs:
   greeting_job:
@@ -12,10 +14,11 @@ jobs:
     env:
       Greeting: Hello
     steps:
-      - name: "Set time to var"
-        run: echo "DAY_OF_WEEK=`date +%a`" >> $GITHUB_ENV 
+      - name: "Set time to NOW_TIME"
+        run: echo "NOW_TIME=`date +%H`" >> $GITHUB_ENV 
 
       - name: "Say Hello Pert"
+        if: $NOW_TIME > 3
         run: |
           echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
           date
