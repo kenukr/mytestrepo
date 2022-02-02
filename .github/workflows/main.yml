@@ -2,6 +2,9 @@ name: Greeting
 
 on:
   workflow_dispatch
+  push:
+    branches:
+      - main
 
 env:
   NOW_TIME: 23
