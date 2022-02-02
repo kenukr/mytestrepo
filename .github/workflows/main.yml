@@ -12,14 +12,8 @@ jobs:
     env:
       Greeting: Hello
     steps:
-      - name: "Checkout"
-        uses: actions/checkout@v2
-
       - name: "Set time to var"
-        run: echo `date +%a` >> $DAY_OF_WEEK 
-        #- name: "Compere time"
-        #if: $DATE_TIME => '13'
-        #run: exit 1
+        run: echo `date +%a` > $DAY_OF_WEEK 
 
       - name: "Say Hello Pert"
         run: |
