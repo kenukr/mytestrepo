@@ -30,7 +30,7 @@ jobs:
         run: echo "NOW_TIME=${{ steps.time.outputs.time }}" >> $GITHUB_ENV
           
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
-        if: ${{ env.NOW_TIME }} < ${{ env.ACTION_SLEEP_END }} 
+        if: ${{ env.NOW_TIME < env.ACTION_SLEEP_END }} 
         run: |
           echo "Skip rest because current hour (${{ env.NOW_TIME }}) is inside sleep period of time ( > ${{ env.ACTION_SLEEP_BEGIN }} and < ${{ env.ACTION_SLEEP_END }})"
           exit 2 
