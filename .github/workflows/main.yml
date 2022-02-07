@@ -10,11 +10,9 @@ on:
 
 env:
   NOW_TIME: 23
-  
-
-jobs:  ACTION_SLEEP_BEGIN: 0
+  ACTION_SLEEP_BEGIN: 0
   ACTION_SLEEP_END: 5
-  
+
 jobs:
 
   check_time:
