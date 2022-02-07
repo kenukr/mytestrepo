@@ -14,20 +14,21 @@ env:
 
 jobs:
        
-  greeting_job:
+  check_time:
+    if: ${{ github.head_ref }} == 'develop'
     runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
+    
     steps:
-      - name: "Set time to var NOW_TIME"
-        run: echo "NOW_TIME=`date +%H`" >> $GITHUB_ENV 
+      
+      - name: Get Cuttent Time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 2
+          format: 'HH'
 
-      - name: "Check dont Work Time for exit"
-        if: ${{ (env.NOW_TIME > 0 ) && ( env.NOW_TIME < 5 ) }}
-        run:  |
-          echo "NOW_TIME=${{ env.NOW_TIME }}" 
-          exit 1
-
-      - name: "Greetingi you have WORK time"
+      - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
+        if: ${{ (steps.time.outputs.time != '1' ) && (steps.time.outputs.time != '2') }}
         run: |
-          echo "$Greeting ${{github.actor}}. Time is ${{ env.NOW_TIME }} hour !"
+          echo "Skip rest because current hour (${{ steps.time.outputs.time }}) is inside sleep period of time ( > ${{ env.ACTION_SLEEP_BEGIN }} and < ${{ env.ACTION_SLEEP_END }})"
+          exit 2 
