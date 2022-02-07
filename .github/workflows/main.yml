@@ -27,7 +27,7 @@ jobs:
         run: echo "TC=${{steps.time.outputs.time}}" >> $GITHUB_ENV
         
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
-        if: ${{ env.TC == '18' || env.TC == '1' || env.TC  == '2' || env.TC  == '3' || env.TC == '4' || env.TC == '5' }}
+        if: ${{ env.TC == '0' || env.TC == '1' || env.TC  == '2' || env.TC  == '3' || env.TC == '4' || env.TC == '5' }}
         run: |
           echo "Skip rest because current hour (${{ env.TC }}) is inside sleep period of time"
           exit 2
