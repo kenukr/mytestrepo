@@ -16,11 +16,12 @@ env:
 jobs:
 
   check_time:
-    #if: ${{ github.head_ref == 'main' }}
+    #if: github.head_ref == 'main'
     runs-on: ubuntu-latest
     
     steps:
-      
+      - name: 1
+        run: echo "#{{ github.head_ref }}"
       - name: Get Cuttent Time
         id: time
         uses: nanzm/get-time-action@v1.1
@@ -33,7 +34,7 @@ jobs:
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
         if: ( $CT > ${{ env.ACTION_SLEEP_BEGIN}} ) && ( $CT < ${{env.ACTION_SLEEP_END}} )
         run: |
-          echo "Skip rest because current hour ( $CT is inside sleep period of time ( > ${{ env.ACTION_SLEEP_BEGIN }} and < ${{ env.ACTION_SLEEP_END }})"
+          echo "Skip rest because current hour ( ${{ CT }} is inside sleep period of time ( > ${{ env.ACTION_SLEEP_BEGIN }} and < ${{ env.ACTION_SLEEP_END }})"
           exit 2 
 
   greeting_job:
