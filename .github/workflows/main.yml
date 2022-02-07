@@ -11,7 +11,7 @@ on:
 env:
   NOW_TIME: 23
   ACTION_SLEEP_BEGIN: 0
-  ACTION_SLEEP_END: 5
+  ACTION_SLEEP_END: 18
 
 jobs:
 
@@ -30,7 +30,7 @@ jobs:
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
         if: ${{ (steps.time.outputs.time > env.ACTION_SLEEP_BEGIN) && (steps.time.outputs.time < env.ACTION_SLEEP_END) }}
         run: |
-          echo "Skip rest because current hour (${{ steps.time.outputs.time }}) is inside sleep period of time ( > ${{ env.ACTION_SLEEP_BEGIN }} and < ${{ env.ACTION_SLEEP_END }})"
+          echo "Skip rest because current hour (${{ steps.time.outputs.time }}) is inside sleep period of time ( > ${{ env.ACTION_SLEEP_BEGIN }} and < ${{ env.ACTION_SLEEP_END }} )"
           exit 2
           
   greeting_job:
