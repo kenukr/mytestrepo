@@ -13,30 +13,9 @@ env:
   ACTION_SLEEP_END: 5
 
 jobs:
-
-  check_time:
-    if: ${{ github.head_ref }} == 'main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Cuttent Time
-        id: time
-        uses: nanzm/get-time-action@v1.1
-        with:
-          timeZone: 2
-          format: 'HH'
-          
-      - name: Get VAR
-        run: echo "NOW_TIME=${{ steps.time.outputs.time }}" >> $GITHUB_ENV 
- 
-      - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
-        if: ${{ env.NOW_TIME }} < 5 
-        run: |
-          echo "Skip rest because current hour (${{ steps.time.outputs.time }}) is inside sleep period of time ( > ${{ env.ACTION_SLEEP_BEGIN }} and < ${{ env.ACTION_SLEEP_END }})"
-          exit 2          
-         
+       
   greeting_job:
     runs-on: ubuntu-latest
-    needs: [check_time]
     env:
       Greeting: Hello
     steps:
@@ -45,7 +24,9 @@ jobs:
 
       - name: "Check dont Work Time for exit"
         if: ${{ (env.NOW_TIME > 1) && (env.NOW_TIME < 6) }}
-        run: exit 1
+        run: |
+          echo "NOW_TIME=${{ emv.NOW_TIME }}" 
+          exit 1
 
       - name: "Greetingi you have WORK time"
         run: |
