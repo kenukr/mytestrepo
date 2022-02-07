@@ -24,7 +24,9 @@ jobs:
 
       - name: "Check dont Work Time for exit"
         if: ${{ (env.NOW_TIME > 1) && (env.NOW_TIME < 6) }}
-        run:  echo "NOW_TIME=${{ emv.NOW_TIME }}" 
+        run:  |
+          echo "NOW_TIME=${{ env.NOW_TIME }}" 
+          exit 1
 
       - name: "Greetingi you have WORK time"
         run: |
