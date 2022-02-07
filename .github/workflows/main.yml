@@ -1,4 +1,4 @@
-name: Greeting 
+name: Привет "Лунатикам"
 
 on: 
   push:
