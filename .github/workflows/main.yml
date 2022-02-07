@@ -16,7 +16,7 @@ env:
 jobs:
 
   check_time:
-    if: ${{ github.head_ref == 'main' }}
+    #if: ${{ github.head_ref == 'main' }}
     runs-on: ubuntu-latest
     
     steps:
