@@ -26,7 +26,7 @@ jobs:
           timeZone: 2
           format: 'HH'
           
-        -name: Put 
+      -name: Put 
         run: echo "NOW_TIME=${{ steps.time.outputs.time }}" >> $GITHUB_ENV
           
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
