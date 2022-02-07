@@ -23,7 +23,7 @@ jobs:
           timeZone: 2
           format: 'HH'
       
-      -name: Set var    
+      - name: Set var    
         run: echo "TC=${{steps.time.outputs.time}}" >> $GITHUB_ENV
         
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
