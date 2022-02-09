@@ -27,7 +27,7 @@ jobs:
         run: echo "TC=${{steps.time.outputs.time}}" >> $GITHUB_ENV
         
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
-        if: ${{ github.head_ref }} == 'main' && ${{ env.TC != '15' || env.TC != '00' || env.TC != '01' || env.TC  != '02' || env.TC  != '03' || env.TC != '04' }} 
+        if: ${{ github.head_ref == 'main' && ( env.TC != '15' || env.TC != '00' || env.TC != '01' || env.TC  != '02' || env.TC  != '03' || env.TC != '04' ) }} 
         run: |
           echo "!!!! Run this because current hour (${{ env.TC }}) is not inside sleep period of time"
           
