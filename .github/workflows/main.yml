@@ -11,7 +11,6 @@ on:
 jobs:
        
   check_time:
-    if: ${{ github.head_ref }} == 'develop'
     runs-on: ubuntu-latest
     
     steps:
@@ -26,8 +25,13 @@ jobs:
       - name: Set var    
         run: echo "TC=${{steps.time.outputs.time}}" >> $GITHUB_ENV
         
+  build:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    
+    steps:
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
-        if: ${{ env.TC == '0' || env.TC == '1' || env.TC  == '2' || env.TC  == '3' || env.TC == '4' || env.TC == '5' }}
+        if: ${{ github.head_ref }} == 'master' && ( ${{ env.TC != '00' || env.TC != '01' || env.TC  != '02' || env.TC  != '03' || env.TC != '04' }})
         run: |
-          echo "Skip rest because current hour (${{ env.TC }}) is inside sleep period of time"
-          exit 2
+          echo "Run this because current hour (${{ env.TC }}) is not inside sleep period of time"
+    
