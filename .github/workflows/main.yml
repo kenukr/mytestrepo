@@ -8,26 +8,9 @@ on:
          # * is a special character in YAML so you have to quote this string
          #- cron:  '50 5,16 * * *'
 
-env:
-  TC: 0
 
 jobs:
        
-  check_time:
-    runs-on: ubuntu-latest
-    
-    steps:
-      
-      - name: Get Cuttent Time
-        id: time
-        uses: nanzm/get-time-action@v1.1
-        with:
-          timeZone: 2
-          format: 'HH'
-      
-      - name: Set var    
-        run: echo "TC=${{steps.time.outputs.time}}" >> $GITHUB_ENV
-        
   build:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -47,7 +30,7 @@ jobs:
       - name: "Skip rest on sleep (non working) time (current hour is steps.time.outputs.time)"
         if: ${{ github.head_ref }} == 'main' && ( ${{ env.TC != '14' || env.TC != '00' || env.TC != '01' || env.TC  != '02' || env.TC  != '03' || env.TC != '04' }} )
         run: |
-          echo "Run this because current hour (${{ env.TC }}) is not inside sleep period of time"
+          echo "!!!! Run this because current hour (${{ env.TC }}) is not inside sleep period of time"
           
       - name: Finish 
         run: echo "Run this because current hour (${{ env.TC }})"
