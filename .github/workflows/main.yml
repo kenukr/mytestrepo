@@ -13,7 +13,9 @@ jobs:
        
   takeoff_attempt:
     #runs-on: ubuntu-latest
-    runs-on: [self-host, ubuntu-latest]
+    runs-on:
+      - self-host
+      - ubuntu-latest
 
     steps:
       - name: Get image nginx test 1
