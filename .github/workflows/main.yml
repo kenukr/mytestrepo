@@ -16,7 +16,7 @@ jobs:
     runs-on: [self-host, ubuntu-latest]
 
     steps:
-      - name: Get image nginx test
+      - name: Get image nginx test 1
         run: docker pull nginx
           
       - name: Finish 
