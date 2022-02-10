@@ -11,34 +11,13 @@ on:
 
 jobs:
        
-  build:
-    if: github.event_name == 'push'
+  takeoff_attempt:
     #runs-on: ubuntu-latest
     runs-on: self-hosted
 
     steps:
-      - name: Get Cuttent Time
-        id: time
-        uses: nanzm/get-time-action@v1.1
-        with:
-          timeZone: 2
-          format: 'HH'
-      
-      - name: Set var    
-        run: echo "TC=${{steps.time.outputs.time}}" >> $GITHUB_ENV
-        
-      - name: Prepare -> docker login to ghcr.io
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: "Skip rest on sleep (non working) time current hour is ${{steps.time.outputs.time}}"
-        #if: ${{ github.head_ref == 'main' && ( env.TC != '00' || env.TC != '01' || env.TC  != '02' || env.TC  != '03' || env.TC != '04' ) }} 
-        run: |
-           echo "!!!! Run this because current hour (${{ env.TC }}) is not inside sleep period of time"
-           docker pull ghcr.io/vykenorse/api
+      - name: Get image nginx
+        run: docker pull nginx
           
       - name: Finish 
-        run: echo "Run this because current hour (${{ env.TC }})"
+        run: echo "Run is OFF"
