@@ -18,7 +18,7 @@ jobs:
         run: docker pull nginx
     
       - name: STOP and exit
-        if: ${ github.event_name == 'workflow_dispatch' }
+        if: github.event_name == 'workflow_dispatch'
           run: exit 2
           
       - name: Finish 
