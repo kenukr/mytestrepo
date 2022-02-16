@@ -19,7 +19,7 @@ jobs:
     
       - name: STOP and exit
         if: ${ github.event_name == 'workflow_dispatch' }
-          exit 2
+          run: exit 2
           
       - name: Finish 
         run: echo "Run is OFF"
