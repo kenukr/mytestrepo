@@ -1,6 +1,7 @@
 name: Злые эксперименты
 
-on: 
+on:
+  workflow_dispatch:
   push:
     branches:
        - main
