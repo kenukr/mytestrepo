@@ -17,6 +17,12 @@ jobs:
     steps:
       - name: Get image nginx test 1
         run: docker pull nginx
+    
+    
+      - name: STOP and exit
+        if: github.event_name == 'workflow_dispatch'
+          exit 2
+          
           
       - name: Finish 
         run: echo "Run is OFF"
