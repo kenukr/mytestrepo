@@ -30,7 +30,7 @@ jobs:
         run: echo "Run is OFF"
 
   Deploy:
-    needs:[build_1 build_2]
+    needs:[build_1, build_2]
     runs-on: ubuntu-latest
 
       
