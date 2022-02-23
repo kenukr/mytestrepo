@@ -11,7 +11,7 @@ on:
 
 
 jobs:
-  build:
+  build_1:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +21,19 @@ jobs:
       - name: STOP and exit
         if: github.event_name == 'workflow_dispatch'
         run: exit 2
-          
+         
+  build_2:
+    runs-on: ubuntu-latest
+      
+    steps:
       - name: Finish 
         run: echo "Run is OFF"
+
+  Deploy:
+    needs:[build_1 build_2]
+    runs-on: ubuntu-latest
+
+      
+    steps:
+      - name: Finish DEploy
+        run: echo "Deploy..."
