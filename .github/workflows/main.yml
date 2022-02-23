@@ -8,6 +8,8 @@ on:
          #schedule:
          # * is a special character in YAML so you have to quote this string
          #- cron:  '50 5,16 * * *'
+env:
+  VAR: 0
 
 
 jobs:
@@ -18,7 +20,9 @@ jobs:
     steps:
     
       - name: Get image nginx test 1
-        run: docker pull nginx
+        run: |
+          docker pull nginx
+          echo "VAR=5 >> $GITHUB_ENV
     
       - name: STOP and exit
         if: github.event_name == 'workflow_dispatch'
@@ -42,4 +46,4 @@ jobs:
       
     steps:
       - name: Finish DEploy
-        run: echo "Deploy..."
+        run: echo "Deploy... ${{ env.VAR }}"
