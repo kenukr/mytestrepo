@@ -22,7 +22,7 @@ jobs:
       - name: Get image nginx test 1
         run: |
           docker pull nginx
-          echo "VAR=5 >> $GITHUB_ENV
+          echo "VAR=5" >> $GITHUB_ENV
     
       - name: STOP and exit
         if: github.event_name == 'workflow_dispatch'
