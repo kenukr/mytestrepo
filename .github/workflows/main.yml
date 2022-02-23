@@ -13,9 +13,10 @@ on:
 jobs:
   build_1:
     runs-on: ubuntu-latest
-
+    continue-on-error: true
+    
     steps:
-      continue-on-error: true
+    
       - name: Get image nginx test 1
         run: docker pull nginx
     
