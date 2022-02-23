@@ -20,8 +20,12 @@ jobs:
     
       - name: STOP and exit
         if: github.event_name == 'workflow_dispatch'
-        run: exit 2
-         
+        run: exit 0
+
+      - name: Echo 
+        run: echo "type Echo "
+        
+                 
   build_2:
     runs-on: ubuntu-latest
       
