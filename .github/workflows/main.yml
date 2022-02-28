@@ -29,7 +29,7 @@ jobs:
       - name: Echo
         if: ${{ steps.newvar.outputs.var1 }} == 'skip'
         run: | 
-          echo "Exit"
+          echo "Exit ${{ steps.newvar.outputs.var1 }}"
           exit 2
         
                  
