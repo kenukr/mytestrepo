@@ -16,13 +16,17 @@ jobs:
   build_1:
     runs-on: ubuntu-latest
     continue-on-error: true
+    outputs:
+      chvar: ${{ steps.newvar.outputs.var1 }}
     
     steps:
     
       - name: Get image nginx test 1
+      - id: newvar
         run: |
           docker pull nginx
           echo "VAR=5" >> $GITHUB_ENV
+          echo "::set-output name=var1::555"
     
       - name: STOP and exit
         if: github.event_name == 'workflow_dispatch'
@@ -45,5 +49,5 @@ jobs:
 
       
     steps:
-      - name: Finish DEploy
-        run: echo "Deploy... ${{ env.VAR }}"
+      - name: Finish Deploy
+        run: echo "Deploy... ${{needs.build_1.outputs.chvar}}"
