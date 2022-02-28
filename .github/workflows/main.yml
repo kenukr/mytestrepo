@@ -28,9 +28,7 @@ jobs:
           
       - name: Echo
         if: ${{ steps.newvar.outputs.var1 }}
-        run: | 
-          echo "Exit ${{ steps.newvar.outputs.var1 }}"
-          exit 2
+        run: exit 2
         
                  
   build_dev_or_stage:
@@ -45,13 +43,9 @@ jobs:
     runs-on: ubuntu-latest
       
     steps:
-      - name: Finish Deploy QA
+      - name: Deploy QA
         if: ${{!needs.build_qa.outputs.chvar}}
         run: echo "Deploy QA... OK"
-
-      - name: Finish Deploy QA
-        if: ${{needs.build_qa.outputs.chvar}}
-        run: echo "Deploy QA... ${{needs.build_qa.outputs.chvar}}..."
       
-      - name: Finish Deploy for DEV or STAGE
+      - name: Deploy for DEV or STAGE
         run: echo "Deploy DEV... OK"
