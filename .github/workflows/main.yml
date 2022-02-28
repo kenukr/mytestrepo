@@ -24,10 +24,10 @@ jobs:
       - name: Check event name
         id: newvar
         if: github.event_name == 'workflow_dispatch'
-        run:  echo "::set-output name=var1::skip"
+        run: echo "::set-output name=var1::skip"
           
       - name: Echo
-        if:  ${{ steps.newvar.outputs.var1 }} == 'skip'
+        if: ${{ steps.newvar.outputs.var1 }} == 'skip'
         run: | 
           echo "Exit"
           exit 2
