@@ -18,7 +18,7 @@ jobs:
     steps:
     
       - name: Get image nginx test 1
-      - id: newvar
+        id: newvar
         run: |
           docker pull nginx
           echo "::set-output name=var1::555"
