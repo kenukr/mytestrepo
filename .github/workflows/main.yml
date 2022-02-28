@@ -21,15 +21,16 @@ jobs:
         run: |
           docker pull nginx
     
-      - name: STOP and exit
+      - name: Check event name
         id: newvar
         if: github.event_name == 'workflow_dispatch'
-        run: |
-          echo "::set-output name=var1::skip"
+        run:  echo "::set-output name=var1::skip"
+          
+      - name: Echo
+        if:  ${{ steps.newvar.outputs.var1 }} == 'skip'
+        run: | 
+          echo "Exit"
           exit 2
-
-      - name: Echo 
-        run: echo "type Echo "
         
                  
   build_dev_or_stage:
