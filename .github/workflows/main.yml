@@ -2,16 +2,12 @@ name: Злые эксперименты
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-       - main
+  #push:
+  #  branches:
+  #     - main
          #schedule:
          # * is a special character in YAML so you have to quote this string
          #- cron:  '50 5,16 * * *'
-env:
-  VAR: 0
-
-
 jobs:
   build_1:
     runs-on: ubuntu-latest
@@ -25,7 +21,6 @@ jobs:
       - id: newvar
         run: |
           docker pull nginx
-          echo "VAR=5" >> $GITHUB_ENV
           echo "::set-output name=var1::555"
     
       - name: STOP and exit
@@ -46,7 +41,6 @@ jobs:
   Deploy:
     needs: [build_1, build_2]
     runs-on: ubuntu-latest
-
       
     steps:
       - name: Finish Deploy
