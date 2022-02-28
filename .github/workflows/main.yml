@@ -27,7 +27,7 @@ jobs:
         run: echo "::set-output name=var1::skip"
           
       - name: Echo
-        if: ${{ steps.newvar.outputs.var1 }} == 'skip'
+        if: ${{ steps.newvar.outputs.var1 }} == skip
         run: | 
           echo "Exit ${{ steps.newvar.outputs.var1 }}"
           exit 2
