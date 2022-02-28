@@ -2,9 +2,9 @@ name: Злые эксперименты
 
 on:
   workflow_dispatch:
-  #push:
-  #  branches:
-  #     - main
+  push:
+    branches:
+       - main
          #schedule:
          # * is a special character in YAML so you have to quote this string
          #- cron:  '50 5,16 * * *'
@@ -21,11 +21,12 @@ jobs:
         id: newvar
         run: |
           docker pull nginx
-          echo "::set-output name=var1::skip"
     
       - name: STOP and exit
         if: github.event_name == 'workflow_dispatch'
-        run: exit 2
+        run: |
+          echo "::set-output name=var1::skip"
+          exit 2
 
       - name: Echo 
         run: echo "type Echo "
@@ -44,7 +45,7 @@ jobs:
       
     steps:
       - name: Finish Deploy QA
-        if: ${{needs.build_qa.outputs.chvar}} != skip
+        if: ${{needs.build_qa.outputs.chvar}} != 'skip'
         run: echo "Deploy QA... OK"
       
       - name: Finish Deploy for DEV or STAGE
