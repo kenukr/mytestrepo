@@ -43,9 +43,9 @@ jobs:
     runs-on: ubuntu-latest
       
     steps:
-      - name: Finish Deploy qa
-        if: ${{needs.build_qa.outputs.chvar}} == skip
-        run: echo "Deploy... ${{needs.build_qa.outputs.chvar}}"
+      - name: Finish Deploy QA
+        if: ${{needs.build_qa.outputs.chvar}} != 'skip'
+        run: echo "Deploy QA... OK"
       
-      - name: Finish Deploy for dev or stage
-        run: echo "Deploy... ${{needs.build_qa.outputs.chvar}}"
+      - name: Finish Deploy for DEV or STAGE
+        run: echo "Deploy DEV... OK"
