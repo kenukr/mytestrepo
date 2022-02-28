@@ -9,7 +9,7 @@ on:
          # * is a special character in YAML so you have to quote this string
          #- cron:  '50 5,16 * * *'
 jobs:
-  build_1:
+  build_qa:
     runs-on: ubuntu-latest
     continue-on-error: true
     outputs:
@@ -21,7 +21,7 @@ jobs:
         id: newvar
         run: |
           docker pull nginx
-          echo "::set-output name=var1::555"
+          echo "::set-output name=var1::skip"
     
       - name: STOP and exit
         if: github.event_name == 'workflow_dispatch'
@@ -31,7 +31,7 @@ jobs:
         run: echo "type Echo "
         
                  
-  build_2:
+  build_dev_or_stage:
     runs-on: ubuntu-latest
       
     steps:
@@ -39,9 +39,13 @@ jobs:
         run: echo "Run is OFF"
 
   Deploy:
-    needs: [build_1, build_2]
+    needs: [build_qa, build_dev_or_stage]
     runs-on: ubuntu-latest
       
     steps:
-      - name: Finish Deploy
-        run: echo "Deploy... ${{needs.build_1.outputs.chvar}}"
+      - name: Finish Deploy qa
+        if: ${{needs.build_qa.outputs.chvar}} == 'skip'
+        run: echo "Deploy... ${{needs.build_qa.outputs.chvar}}"
+      
+      - name: Finish Deploy for dev or stage
+        run: echo "Deploy... ${{needs.build_qa.outputs.chvar}}"
