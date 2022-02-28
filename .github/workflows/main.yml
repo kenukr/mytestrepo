@@ -46,11 +46,11 @@ jobs:
       
     steps:
       - name: Finish Deploy QA
-        if: ${{needs.build_qa.outputs.chvar}} != "skip"
+        if: ${{!needs.build_qa.outputs.chvar}}
         run: echo "Deploy QA... OK"
 
       - name: Finish Deploy QA
-        if: ${{needs.build_qa.outputs.chvar}} == "skip"
+        if: ${{needs.build_qa.outputs.chvar}}
         run: echo "Deploy QA... ${{needs.build_qa.outputs.chvar}}..."
       
       - name: Finish Deploy for DEV or STAGE
