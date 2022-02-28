@@ -44,7 +44,7 @@ jobs:
       
     steps:
       - name: Finish Deploy qa
-        if: ${{needs.build_qa.outputs.chvar}} == 'skip'
+        if: ${{needs.build_qa.outputs.chvar}} == skip
         run: echo "Deploy... ${{needs.build_qa.outputs.chvar}}"
       
       - name: Finish Deploy for dev or stage
