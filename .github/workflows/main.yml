@@ -18,11 +18,11 @@ jobs:
     steps:
     
       - name: Get image nginx test 1
-        id: newvar
         run: |
           docker pull nginx
     
       - name: STOP and exit
+        id: newvar
         if: github.event_name == 'workflow_dispatch'
         run: |
           echo "::set-output name=var1::skip"
