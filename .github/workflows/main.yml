@@ -29,7 +29,7 @@ jobs:
         if: ${{ ( steps.time.outputs.time != '23' || steps.time.outputs.time != '00' || steps.time.outputs.time != '01' || steps.time.outputs.time != '02' || steps.time.outputs.time != '03' || steps.time.outputs.time != '04' ) }}
         run: | 
           echo ${{  steps.time.outputs.time }}
-          run: echo "::set-output name=var1::skip"
+          echo "::set-output name=var1::skip"
     
       - name: Get image nginx test 1
         run: |
