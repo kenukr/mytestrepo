@@ -26,9 +26,9 @@ jobs:
 
       - name: Test time
         env:
-          TIME: "${{ steps.time.outputs.time }}"
-        if: ${{ ( TIME != '23' || TIME != '00' || TIME != '01' || TIME  != '02' || TIME  != '03' || TIME != '04' ) }}
-        run: echo $TIME
+          T: "${{ steps.time.outputs.time }}"
+        $if: ${{ ( T != '23' || T != '00' || T != '01' || T  != '02' || T != '03' || T != '04' ) }}
+        run: echo $T
     
       - name: Get image nginx test 1
         run: |
