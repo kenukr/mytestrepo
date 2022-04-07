@@ -1,5 +1,5 @@
 variable "project_name" {
-   default = "vykenorse" 
+   default = "test" 
 }
 
 variable "new" {
@@ -11,7 +11,6 @@ variable "region" {
 }
 
 provider "google" {
-   #credentials = "${file(".tf-gcp-account.json")}"
    project = "${var.project_name}"
    region = "${var.region}"
 }
