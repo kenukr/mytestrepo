@@ -4,7 +4,7 @@ resource "google_compute_instance" "test_golang_instance" {
    zone = "${var.region}"
    boot_disk {
       initialize_params {
-         image = "debian-cloud/debian-10" # gcloud compute images list
+         image = "cos-cloud/cos-85-lts" # gcloud compute images list
       }
    }
    network_interface {
