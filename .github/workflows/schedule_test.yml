@@ -2,13 +2,11 @@ name: выполнение по времени
 
 on:
   schedule:
-    - cron:  '40 11 * * *'
+    - cron:  '00 12 * * *'
 
 jobs:
-
-  build:
-    runs-on: self-hosted
-
+  test_schedule:
+    runs-on: ubuntu-latest
     steps:
-      - name: Deploy -> echo TEST
-        run: echo "TEST"
+      - name: Every time
+        run: echo "This step will always run"
