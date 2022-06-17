@@ -2,7 +2,7 @@ name: выполнение по времени
 
 on:
   schedule:
-    - cron:  '15 12 * * *'
+    - cron:  '20 11 * * *'
 
 jobs:
 
